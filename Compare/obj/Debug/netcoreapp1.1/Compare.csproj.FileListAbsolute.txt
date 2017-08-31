@@ -1,0 +1,9 @@
+D:\Projects\Compare\Compare\bin\Debug\netcoreapp1.1\Compare.deps.json
+D:\Projects\Compare\Compare\bin\Debug\netcoreapp1.1\Compare.runtimeconfig.json
+D:\Projects\Compare\Compare\bin\Debug\netcoreapp1.1\Compare.runtimeconfig.dev.json
+D:\Projects\Compare\Compare\bin\Debug\netcoreapp1.1\Compare.dll
+D:\Projects\Compare\Compare\bin\Debug\netcoreapp1.1\Compare.pdb
+D:\Projects\Compare\Compare\obj\Debug\netcoreapp1.1\Compare.AssemblyInfo.cs
+D:\Projects\Compare\Compare\obj\Debug\netcoreapp1.1\Compare.dll
+D:\Projects\Compare\Compare\obj\Debug\netcoreapp1.1\Compare.pdb
+D:\Projects\Compare\Compare\obj\Debug\netcoreapp1.1\Compare.csprojResolveAssemblyReference.cache

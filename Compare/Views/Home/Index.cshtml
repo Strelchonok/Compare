@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+
+<button type="button" class="btn btn-warning">Сгенерировать тестовые данные для БД</button>
+<button type="button" class="btn btn-success">Сгенерировать CSV-файл и сохранить</button>
+<button type="button" class="btn btn-primary">запустить алгоритм сравнения товаров и обновления цен</button>
+<p style="display:none" id="loader">В процессе ...</p>
+<hr/>
+<span id="info"></span>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $(".btn-warning").click(function () {
+            $(".btn-warning").prop("disabled", true);
+
+            $("#loader").show();
+
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GenerationToDB", "Home")',
+                async: true,
+                timeout: 1800000,
+                success: function (data) {
+                    $(".btn-primary").prop("disabled", false);
+                    $("#info").prepend("<p>На генерацию данных для БД и сохранение затрачено " + data + "</p>");
+                    $("#loader").hide();
+                }
+            });
+       });
+
+        $(".btn-success").click(function () {
+            $(".btn-success").prop("disabled", true);
+            $("#loader").show();
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GenerationToCSV", "Home")',
+                async: true,
+                timeout: 1800000,
+                success: function (data) {
+                    $("#info").prepend("<p>На генерацию CSV-файла и сохранение затрачено " + data + "</p>");
+                    $("#loader").hide();
+                }
+            });
+        });
+
+        $(".btn-primary").click(function () {
+            $(".btn-primary").prop("disabled", true);
+            $("#loader").show();
+
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("Compare", "Home")',
+                async: true,
+                timeout: 1800000,
+                success: function (data) {
+                    $("#info").prepend("<p>Количество совпадений =" + data.coincidences + "</p>"
+                                       + "<p>Количество обновлений =" + data.newPrice + "</p>"
+                                        + "<p>Обработка =" + data.time + "</p>");
+                    $("#loader").hide();
+                }
+            });
+        });
+    });
+
+
+</script>
